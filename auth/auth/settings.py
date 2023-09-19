@@ -116,7 +116,7 @@ else:
 
 EMAIL_BACKEND = ENV.str('EMAIL_BACKEND',None)
 EMAIL_HOST = ENV.str('EMAIL_HOST')
-EMAIL_PORT = ENV.str('587')
+EMAIL_PORT = ENV.str('EMAIL_PORT')
 EMAIL_HOST_USER = ENV.str('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = ENV.str('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
@@ -189,9 +189,9 @@ DJOSER = {
     'ACTIVATION_URL' : 'activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL' : True,
     'SERIALIZERS' : {
-        'user_create' : 'users.serializers.CustomUserCreateSerializer',
-        'user' : 'users.serializers.UserCreateSerializer',
-        'user_delete' : 'users.serializers.UserDeleteSerializer',
+        'user_create' : 'users.apis.serializers.CustomUserCreateSerializer',
+        'user' : 'users.apis.serializers.UserCreateSerializer',
+        'user_delete' : 'users.apis.serializers.UserDeleteSerializer',
     }
 }
 
@@ -217,4 +217,4 @@ LOGGING = {
 }
 
 RAZORPAY_KEY_ID = ENV.str('RAZORPAY_KEY_ID')
-RAZORPAY_KEY_SECRET =  ENV.str('zilYJHW6eX7JaESyFkJfR0UY')
+RAZORPAY_KEY_SECRET =  ENV.str('RAZORPAY_KEY_SECRET')

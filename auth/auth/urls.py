@@ -35,5 +35,5 @@ urlpatterns = [
     path('auth/', include('djoser.urls.jwt')),
     path("", include(router.urls)),
     
-    path('auth/api/',include('auth.users.urls')),
+    path('auth/api/',include('users.urls')),
 ]

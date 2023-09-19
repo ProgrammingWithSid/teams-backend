@@ -10,7 +10,8 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from users.apis.serializers import UserOrderSerializer
-from users.models import UserOrder,Team
+from users.models import UserOrder
+from teams.models import Team
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 import uuid
+from teams.models import Team
 
 class UserAccountManager(BaseUserManager):
     def create_user(self,email,name,password=None):
@@ -51,7 +52,7 @@ class UserAccount(AbstractBaseUser,PermissionsMixin):
 class UserOrder(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(UserAccount,on_delete=models.SET_NULL,null=True)
-    teamName = models.ForeignKey("Team",on_delete=models.SET_NULL,null=True)
+    teamName = models.ForeignKey(Team,on_delete=models.SET_NULL,null=True)
     order_payment_id = models.CharField(null=True,max_length=100)
     # paymentMethod = models.CharField(max_length=200,null=True,blank=True)
     # totalPrice = models.Fore(max_digits=12,decimal_places=2,null=True,blank=True)

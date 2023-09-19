@@ -3,15 +3,14 @@ from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import get_object_or_404
 
-
-from rest_framework import status
 # Rest Framework Import
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated  
 from rest_framework.response import Response
 from rest_framework.serializers import Serializer
 from users.apis.serializers import UserOrderSerializer
-from users.models import Team,UserOrder
+from teams.models import Team
+from users.models import UserOrder
 from django.http import JsonResponse
 import razorpay
 from django.conf import settings
@@ -22,12 +21,7 @@ import json
 
 from django.shortcuts import render
 
-from rest_framework import permissions
 
-class ReadOnlyPermission(permissions.BasePermission):
-    def has_permission(self, request, view):
-        # Allow GET requests for authenticated users
-        return request.method == 'GET' and request.user.is_authenticated
     
 
 @api_view(['GET'])
