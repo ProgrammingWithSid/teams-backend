@@ -109,7 +109,7 @@ else:
             "NAME" : 'cric_backend',
             "USER" : 'postgres',
             "PASSWORD" :'1234',
-            "HOST" :'localhost',
+            "HOST" :'db',
             "PORT" : '5432',
             # "NAME": ENV.str("DB_NAME", None),
             # "USER": ENV.str("DB_USER", None),
