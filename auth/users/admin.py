@@ -4,4 +4,4 @@ from .models import *
 
 @admin.register(UserOrder)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['user','teamName','order_payment_id','isPaid','paidAt','createdAt',]
+    list_display = ['user','isPaid','paidAt',]

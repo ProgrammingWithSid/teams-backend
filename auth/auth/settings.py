@@ -106,11 +106,16 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
-            "NAME": ENV.str("DB_NAME", None),
-            "USER": ENV.str("DB_USER", None),
-            "PASSWORD": ENV.str("DB_PASSWORD", None),
-            "HOST": ENV.str("DB_HOST", None),
-            "PORT": ENV.str("DB_PORT", None),
+            "NAME" : 'cric_backend',
+            "USER" : 'postgres',
+            "PASSWORD" :'1234',
+            "HOST" :'localhost',
+            "PORT" : '5432',
+            # "NAME": ENV.str("DB_NAME", None),
+            # "USER": ENV.str("DB_USER", None),
+            # "PASSWORD": ENV.str("DB_PASSWORD", None),
+            # "HOST": ENV.str("DB_HOST", None),
+            # "PORT": ENV.str("DB_PORT", None),
         }
     }
 

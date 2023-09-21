@@ -3,7 +3,7 @@ from teams.models import *
 from .serializers import *
 from rest_framework.permissions import IsAuthenticated
 
-from users.permissions import ReadOnlyPermission  # Import the custom permission class
+from teams.views import ReadOnlyPermission  # Import the custom permission class
 
 class TeamViewsets(viewsets.ModelViewSet):
     queryset = Team.objects.all()

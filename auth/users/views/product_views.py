@@ -28,7 +28,6 @@ from django.shortcuts import render
 def viewPaidTeam(request,pk):
     user = request.user
 
-    # Retrieve the team with the given UUID for the specific user, or return a 404 if not found
     team = get_object_or_404(Team, uuid=pk)
     
     # Check if the user has ordered this team
@@ -77,17 +76,16 @@ def results(request):
     
 
 
+
+
+
 @api_view(['GET'])
 def prediction(request):
 
     user = request.user
 
-    # Fetch teams that the user has already ordered
     ordered_teams = UserOrder.objects.filter(user=user,isPaid=True).values('teamName')
-
     predicted_teams = Team.objects.exclude(uuid__in=ordered_teams)
-    # print(predicted_teams)
-    # Serialize the predicted teams
     predicted_teams_data = []
 
     for team in predicted_teams:
@@ -100,12 +98,13 @@ def prediction(request):
         }
         predicted_teams_data.append(team_data)
 
+     
     return JsonResponse({'predicted_teams': predicted_teams_data})
-
 
 
 @api_view(['POST'])
 def getTeam(request, pk):
+
     user = request.user
     team = get_object_or_404(Team, uuid=pk)
     

@@ -10,11 +10,11 @@ urlpatterns = [
     path('myorders/',views.getMyOrders,name="myorders"),
     path('<str:pk>/',views.getOrderById,name="user-order"),
 
-    path('prediction/',product_views.prediction,name="prediction"),
-    path('results/',product_views.results,name="results"),
-    path('success/', product_views.payment_success_handle, name='success/'),
+    path('api/prediction/',product_views.prediction,name="prediction"),
+    path('api/results/',product_views.results,name="results"),
+    path('api/success/', product_views.payment_success_handle, name='success/'),
 
-    path('prediction/<str:pk>/',product_views.getTeam,name="team"),
-    path('results/<str:pk>/',product_views.viewPaidTeam,name="team"),
+    path('api/prediction/<str:pk>/',product_views.getTeam,name="team"),
+    path('api/results/<str:pk>/',product_views.viewPaidTeam,name="team"),
 ]
 

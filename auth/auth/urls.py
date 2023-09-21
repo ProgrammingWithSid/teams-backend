@@ -18,7 +18,6 @@ from django.urls import path,include,re_path
 from django.views.generic import TemplateView
 from rest_framework.routers import DefaultRouter
 from users.apis.viewsets import *
-from users.views import product_views as views
 
 from teams.apis.viewsets import *
 
@@ -34,6 +33,6 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path("", include(router.urls)),
-    
-    path('auth/api/',include('users.urls')),
+
+    path('auth/',include('users.urls')),
 ]
