@@ -1,4 +1,7 @@
 # Environments
+
+#secrets
+.env
 /auth/auth/.env
 .env
 .venv
