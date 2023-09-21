@@ -8,7 +8,7 @@ urlpatterns = [
     path('profile/',user_views.getUserProfile,name="user_profile"),
     path('profile/update/',user_views.updateUserProfile,name="user_profile_update"),
     path('myorders/',views.getMyOrders,name="myorders"),
-    path('<str:pk>/',views.getOrderById,name="user-order"),
+    # path('<str:pk>/',views.getOrderById,name="user-order"),
 
     path('api/prediction/',product_views.prediction,name="prediction"),
     path('api/results/',product_views.results,name="results"),

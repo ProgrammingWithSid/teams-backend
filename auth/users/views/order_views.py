@@ -17,36 +17,37 @@ from teams.models import Team
 @permission_classes([IsAuthenticated])
 def getMyOrders(request):
     user = request.user
-    orders = user.order_set.all()
-    serializer = UserOrderSerializer(orders, many=True)
+    ordered_teams = UserOrder.objects.filter(user=user,isPaid=True).values('teamName')
+
+    serializer = UserOrderSerializer(ordered_teams, many=True)
     return Response(serializer.data)
 
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def getOrderById(request, pk):
+# @api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+# def getOrderById(request, pk):
 
-    user = request.user
-    new_user_order = UserOrder(
-            user=user,  
-            teamName=Team.objects.get(pk=Team.uuid), 
-            isPaid=False,  
-        )
-    new_user_order.save()
+#     user = request.user
+#     new_user_order = UserOrder(
+#             user=user,  
+#             teamName=Team.objects.get(pk=Team.uuid), 
+#             isPaid=False,  
+#         )
+#     new_user_order.save()
 
-    try:
-        order = UserOrder.objects.get(uuid=pk)
-        if  order.user == user:
-            serializer = UserOrderSerializer(order, many=False)
-            return Response(serializer.data)
-        # # else :
-        # #     if request.method == 'POST':
+#     try:
+#         order = UserOrder.objects.get(uuid=pk)
+#         if  order.user == user:
+#             serializer = UserOrderSerializer(order, many=False)
+#             return Response(serializer.data)
+#         # # else :
+#         # #     if request.method == 'POST':
 
 
-        #   # Save the new UserOrder instance
+#         #   # Save the new UserOrder instance
 
-        # serializer = TeamSerializer(team, many=False)
-        # return Response(serializer.data)
+#         # serializer = TeamSerializer(team, many=False)
+#         # return Response(serializer.data)
 
-    except:
-        return Response({'detail': 'Order does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+#     except:
+#         return Response({'detail': 'Order does not exist'}, status=status.HTTP_400_BAD_REQUEST)
